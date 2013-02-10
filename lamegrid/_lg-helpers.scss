@@ -1,0 +1,15 @@
+@mixin lg-cf {
+
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+
+    @if $lg-oldie-support {
+    	*zoom: 1;
+	}
+}

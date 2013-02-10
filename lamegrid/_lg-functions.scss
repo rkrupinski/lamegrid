@@ -1,0 +1,39 @@
+$_lg-ratio: 1;
+
+@if comparable( $lg-gutter-width, $lg-column-width ) {
+	$_lg-ratio : $lg-gutter-width / $lg-column-width;
+} @else {
+	@warn "Incompatible units: #{unit( $lg-gutter-width )} and #{unit( $lg-column-width )}"
+}
+
+@function lg-container-width() {
+	@return $lg-column-count * $lg-column-width + ( $lg-column-count - 1 ) * $lg-gutter-width;
+}
+
+@function lg-column-width( $num ) {
+    @return 100% / ( $num + ( $num - 1 ) * $_lg-ratio );
+}
+
+@function lg-gutter-width( $num ) {
+    @return 100% / ( $num / $_lg-ratio + $num - 1 );
+}
+
+@function lg-span-width( $num, $out-of ) {
+    @return $num * lg-column-width( $out-of ) + ( $num - 1 ) * lg-gutter-width( $out-of );
+}
+
+@function lg-get-last-item( $list ) {
+	@return nth( $list, length( $list ) );
+}
+
+@function lg-is-last( $num ) {
+	@if length( $num ) > 1 {
+		@if lg-get-last-item( $num ) == last {
+			@return true;
+		} @else {
+			@return false;
+		}
+	} @else {
+		@return false;
+	}
+}

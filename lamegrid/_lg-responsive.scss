@@ -1,0 +1,21 @@
+@mixin lg-medium( $className: false ) {
+	@media screen and ( min-width: $lg-medium-screen ) {
+		@content;
+	}
+	@if $className {
+		.#{$className} {
+			@content;
+		}
+	}
+}
+
+@mixin lg-large( $className: false ) {
+	@media screen and ( min-width: $lg-large-screen ) {
+		@content;
+	}
+	@if $className {
+		.#{$className} & {
+			@content;
+		}
+	}
+}

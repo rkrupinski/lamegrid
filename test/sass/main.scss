@@ -1,0 +1,66 @@
+@import "../lamegrid";
+@import "normalize";
+
+%box {
+	background-color: #038e86;
+}
+
+.page {
+	@include lg-container;
+}
+
+.page-header,
+.page-footer {
+	@extend %box;
+
+	min-height: 6em;
+	margin: 1em 0;
+}
+
+.page-content {
+	overflow: hidden;
+}
+
+.main-content {
+	@extend %box;
+
+	@include lg-medium {
+		@include lg-columns( 5 );
+	}
+	@include lg-large {
+		@include lg-columns( 4 );
+	}
+
+	min-height: 34em;
+}
+
+.sidebar {
+	@include lg-medium {
+		@include lg-columns( 3 last );
+	}
+	@include lg-large {
+		@include lg-columns( 4 last );
+	}
+}
+
+.widget {
+	@extend %box;
+
+	min-height: 6em;
+	margin-bottom: 1em;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	@include lg-large {
+		@include lg-columns( 2, 4 );
+
+		&:nth-child(even) {
+			@include lg-columns( 2 last, 4 );
+		}
+		&:last-child {
+			@include lg-reset-columns;
+		}
+	}
+}

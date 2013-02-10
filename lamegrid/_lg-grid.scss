@@ -1,0 +1,39 @@
+@mixin lg-container( $type: fluid ) {
+    @if $type == fluid {
+        max-width: lg-container-width();
+    } @else if $type == fixed {
+        width: lg-container-width();
+    }
+    @if $lg-clear-floats {
+        @include lg-cf;
+    }
+
+    padding-left: $lg-grid-padding;
+    padding-right: $lg-grid-padding;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin lg-columns( $num, $out-of: $lg-column-count ) {
+    width: lg-span-width( nth( $num, 1 ), $out-of );
+
+    @if lg-is-last( $num ) {
+        margin-right: 0;
+        float: $lg-last-col-float;
+    } @else {
+        margin-right: lg-gutter-width( $out-of );
+        float: $lg-col-float;
+    }
+}
+
+@mixin lg-gap-before( $num, $out-of: $lg-column-count ) {
+    margin-left: lg-span-width( nth( $num, 1 ), $out-of ) + lg-gutter-width( $out-of );
+}
+
+@mixin lg-gap-after( $num, $out-of: $lg-column-count ) {
+    margin-right: lg-span-width( nth( $num, 1 ), $out-of ) + lg-gutter-width( $out-of );
+}
+
+@mixin lg-reset-columns {
+    @include lg-columns( $lg-column-count last );
+}
