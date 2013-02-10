@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Test</title>
+		<title>Demo</title>
 		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
@@ -26,6 +26,46 @@
 			</div>
 			<div class="page-footer">
 			</div>
+
+			<pre>
+				<code>
+.page {
+	@include lg-container;
+}
+
+.main-content {
+	@include lg-medium {
+		@include lg-columns( 5 );
+	}
+	@include lg-large {
+		@include lg-columns( 4 );
+	}
+}
+
+.sidebar {
+	@include lg-medium {
+		@include lg-columns( 3 last );
+	}
+	@include lg-large {
+		@include lg-columns( 4 last );
+	}
+}
+
+.widget {
+	@include lg-large {
+		@include lg-columns( 2, 4 );
+
+		&:nth-child(even) {
+			@include lg-columns( 2 last, 4 );
+		}
+		&:last-child {
+			@include lg-reset-columns;
+		}
+	}
+}
+				</code>
+			</pre>
 		</div>
+		
 	</body>
 </html>
