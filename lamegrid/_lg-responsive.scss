@@ -3,7 +3,7 @@
 		@content;
 	}
 	@if $className {
-		.#{$className} {
+		.#{$className} & {
 			@content;
 		}
 	}
