@@ -1,1 +1,1 @@
-Demo: http://rkrupinski.github.com/lamegrid/demo/
+Demo: http://rkrupinski.github.io/lamegrid/demo/
