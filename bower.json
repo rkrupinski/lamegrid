@@ -1,5 +1,6 @@
 {
   "name": "lamegrid",
   "version": "0.0.1",
-  "main": "_lamegrid.scss"
+  "main": "_lamegrid.scss",
+  "ignore": [".gitignore","/demo"]
 }
